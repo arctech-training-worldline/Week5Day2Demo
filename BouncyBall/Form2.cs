@@ -13,6 +13,8 @@ namespace BouncyBall
 {
     public partial class Form2 : Form
     {
+        private const int HowManyBalls = 5;
+
         public Form2()
         {
             InitializeComponent();
@@ -20,12 +22,7 @@ namespace BouncyBall
 
         private void Form2_Click(object sender, EventArgs e)
         {
-            CreateFootBalls(10);
-        }
-
-        private void CreateFootBalls(int howManyBalls)
-        {
-            for (var i = 0; i < howManyBalls; i++)
+            for (var i = 0; i < HowManyBalls; i++)
             {
                 var footBall = new Ball(this);
                 footBall.Bounce();
