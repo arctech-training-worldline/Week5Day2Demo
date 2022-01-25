@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BouncyBall
@@ -18,12 +14,15 @@ namespace BouncyBall
         private int _xFactor;
         private int _yFactor;
 
+        private const string FootBallImagePath =
+            @"C:\\Users\\avina\\OneDrive - arctechinfo.com\\Documents\\Training\\Sessions\\C#\\25-Jan-2022\\Week5Day2Demo\\BouncyBall\\football.jpg";
+
         static readonly Random Random = new();
 
-        public Ball(PictureBox pictureBox, Form form)
+        public Ball(Form form)
         {
             _form = form;
-            _pictureBox = pictureBox;
+            _pictureBox = CreateAFootBallPictureBox();
 
             var x = Random.Next(0, _form.Width - _pictureBox.Width);
             var y = Random.Next(0, _form.Height - _pictureBox.Height);
@@ -32,6 +31,17 @@ namespace BouncyBall
             _yFactor = Random.Next(5, 20);
 
             _position = new Point(x, y);
+        }
+
+        private PictureBox CreateAFootBallPictureBox()
+        {
+            var pictureBoxFootBall = new PictureBox();
+            pictureBoxFootBall.ImageLocation = FootBallImagePath;
+            pictureBoxFootBall.Size = new Size(116, 115);
+
+            _form.Controls.Add(pictureBoxFootBall);
+
+            return pictureBoxFootBall;
         }
 
         public void Bounce()

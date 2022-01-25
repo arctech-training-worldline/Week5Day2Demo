@@ -13,8 +13,6 @@ namespace BouncyBall
 {
     public partial class Form2 : Form
     {
-        private const string FootBallImagePath =
-            @"C:\\Users\\avina\\OneDrive - arctechinfo.com\\Documents\\Training\\Sessions\\C#\\25-Jan-2022\\Week5Day2Demo\\BouncyBall\\football.jpg";
         public Form2()
         {
             InitializeComponent();
@@ -29,22 +27,9 @@ namespace BouncyBall
         {
             for (var i = 0; i < howManyBalls; i++)
             {
-                var pictureBoxFootball = CreateAFootBallPictureBox();
-
-                var footBall = new Ball(pictureBoxFootball, this);
+                var footBall = new Ball(this);
                 footBall.Bounce();
             }
-        }
-
-        private PictureBox CreateAFootBallPictureBox()
-        {
-            var pictureBoxFootBall = new PictureBox();
-            pictureBoxFootBall.ImageLocation = FootBallImagePath;
-            pictureBoxFootBall.Size = new Size(116, 115);
-
-            Controls.Add(pictureBoxFootBall);
-
-            return pictureBoxFootBall;
         }
     }
 }
